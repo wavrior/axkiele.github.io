@@ -1,581 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<!-- Basic Page Needs
-    ================================================== -->
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aleksandra Kielesinska — Creative & Motion Designer, XR Developer. London-based, working globally with Disney, Warner Bros. Discovery, Financial Times and more." />
+  <title>Alex Kielesinska</title>
 
-	<!-- Specific Meta
-    ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<meta name="description" content="Intimate is a One Page Personal & Agency Portfolio Template." />
-	<meta name="keywords"
-		content="HTML5, Template, Design, agency, blog, business, clean, creative, marketing, modern, multipurpose, portfolio, seo, startup, studio, trending" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2NJX9M6K8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E2NJX9M6K8');
+  </script>
 
-	<!-- Titles
-    ================================================== -->
-	<title>Alex Kielesinska</title>
+  <link rel="shortcut icon" href="AK black.svg" />
+  <link rel="apple-touch-icon" href="AK black.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-E2NJX9M6K8"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-	gtag('config', 'G-E2NJX9M6K8');
-	</script>
+    :root {
+      --ink: #111110;
+      --ink-mid: #6b6b67;
+      --ink-light: #a8a8a3;
+      --ink-xlight: #d8d8d3;
+      --paper: #f9f8f5;
+      --paper-warm: #f2f0eb;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --max: 1160px;
+      --pad: clamp(24px, 5vw, 80px);
+      --green: #4a7c59;
+    }
 
-	<!-- icons
-    ================================================== -->
-	<link rel="shortcut icon" href="AK black.svg" />
-	<link rel="apple-touch-icon" sizes="72x72" href="AK black.svg" />
-	<link rel="apple-touch-icon" sizes="114x114" href="AK black.svg" />
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
 
-	<!-- Fonts
-	================================================== -->
-	<link
-		href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-		rel="stylesheet">
-		<link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
-		<link href='https://fonts.googleapis.com/css?family=Anek Latin' rel='stylesheet'>
-	<!-- CSS
-    ================================================== -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-	<link rel="stylesheet" href="assets/css/simple-scrollbar.css" />
-	<link rel="stylesheet" href="assets/css/odometer-theme-default.css" />
-	<link rel="stylesheet" href="assets/css/fontawesome.all.min.css" />
-	<link rel="stylesheet" href="assets/css/style.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="assets/js/modernizr.min.js"></script>
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--paper);
+      border-bottom: 0.5px solid var(--ink-xlight);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      padding: 0 var(--pad); height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 17px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 1px; background: var(--ink); transition: transform 0.3s, opacity 0.3s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .mobile-menu { display: none; flex-direction: column; }
+    .mobile-menu a { display: block; padding: 16px var(--pad); font-size: 13px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; border-bottom: 0.5px solid var(--ink-xlight); }
+    .mobile-menu.open { display: flex; }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: var(--max); margin: 0 auto;
+      padding: clamp(60px, 10vw, 120px) var(--pad) clamp(60px, 8vw, 100px);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end;
+    }
+    .hero-title { font-family: var(--serif); font-size: clamp(44px, 6.5vw, 76px); line-height: 1.02; letter-spacing: -0.025em; font-weight: 400; }
+    .hero-title em { font-style: italic; color: var(--ink-mid); }
+    .hero-desc { font-size: 15px; line-height: 1.8; color: var(--ink-mid); margin-bottom: 2rem; max-width: 380px; }
+    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { display: inline-block; font-size: 10px; font-weight: 400; letter-spacing: 0.11em; text-transform: uppercase; padding: 6px 14px; border: 0.5px solid var(--ink-xlight); border-radius: 100px; color: var(--ink-mid); }
+
+    /* ── SHOWREEL ── */
+    .showreel { border-top: 0.5px solid var(--ink-xlight); padding: clamp(60px, 8vw, 100px) var(--pad); }
+    .showreel-inner { max-width: var(--max); margin: 0 auto; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; }
+    .section-title { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 38px); font-weight: 400; letter-spacing: -0.015em; }
+    .eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-light); }
+    .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; }
+    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* ── PORTFOLIO ── */
+    .portfolio { border-top: 0.5px solid var(--ink-xlight); padding: clamp(60px, 8vw, 100px) var(--pad); }
+    .portfolio-inner { max-width: var(--max); margin: 0 auto; }
+    .portfolio-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+    .filters { display: flex; gap: 1.5rem; }
+    .filter-btn { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.2s; }
+    .filter-btn.active, .filter-btn:hover { color: var(--ink); }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; background: var(--ink-xlight); border: 0.5px solid var(--ink-xlight); }
+
+    .card { background: var(--paper); padding: 2rem 2rem 2.5rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: background 0.25s; position: relative; overflow: hidden; }
+    .card:hover { background: var(--paper-warm); }
+    .card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
+
+    .card-full  { grid-column: span 12; flex-direction: row; align-items: center; gap: 3rem; }
+    .card-half  { grid-column: span 6; }
+    .card-third { grid-column: span 4; }
+
+    .card-arrow { position: absolute; top: 2rem; right: 2rem; font-size: 18px; color: var(--ink-light); opacity: 0; transition: opacity 0.25s, transform 0.25s; transform: translate(-6px, 6px); line-height: 1; }
+
+    .card-thumb { width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 2px; background: var(--paper-warm); flex-shrink: 0; margin-bottom: 1.5rem; }
+    .card-full .card-thumb { width: 48%; aspect-ratio: 4/3; margin-bottom: 0; }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .card:hover .card-thumb img { transform: scale(1.03); }
+
+    .card-body { flex: 1; }
+    .card-full .card-body { padding-right: 2rem; }
+    .card-eyebrow { font-size: 10px; font-weight: 400; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.4rem; }
+    .card-title { font-family: var(--serif); font-size: 22px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 0.5rem; }
+    .card-full .card-title { font-size: clamp(26px, 3vw, 34px); }
+    .card-desc { font-size: 13px; line-height: 1.7; color: var(--ink-mid); margin-top: 0.4rem; }
+    .card[data-hidden] { display: none; }
+
+    /* ── ABOUT ── */
+    .about { border-top: 0.5px solid var(--ink-xlight); padding: clamp(60px, 8vw, 100px) var(--pad); }
+    .about-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 4rem; align-items: start; }
+    .about-sticky { position: sticky; top: 88px; }
+    .about-section-title { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 38px); font-weight: 400; letter-spacing: -0.015em; margin-top: 1rem; }
+    .about-text { font-size: 15px; line-height: 1.85; color: var(--ink-mid); margin-bottom: 1.4rem; }
+    .about-text strong { color: var(--ink); font-weight: 400; }
+
+    /* Experience list in about */
+    .exp-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+    .exp-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: baseline; padding: 14px 0; border-bottom: 0.5px solid var(--ink-xlight); }
+    .exp-row:first-child { border-top: 0.5px solid var(--ink-xlight); }
+    .exp-company { font-size: 13px; font-weight: 400; color: var(--ink); }
+    .exp-role { font-size: 12px; color: var(--ink-mid); }
+    .exp-dates { font-size: 11px; color: var(--ink-light); letter-spacing: 0.04em; white-space: nowrap; }
+
+    .resume-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 2rem; font-size: 12px; font-weight: 400; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 0.5px solid var(--ink); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .resume-link:hover { color: var(--ink-mid); border-color: var(--ink-mid); }
+
+    .clients { margin-top: 2.5rem; padding-top: 2rem; border-top: 0.5px solid var(--ink-xlight); display: flex; flex-wrap: wrap; gap: 10px 18px; }
+    .client { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
+
+    /* ── CONTACT ── */
+    .contact { border-top: 0.5px solid var(--ink-xlight); padding: clamp(60px, 8vw, 100px) var(--pad); }
+    .contact-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .contact-heading { font-family: var(--serif); font-size: clamp(36px, 5vw, 58px); font-weight: 400; letter-spacing: -0.025em; line-height: 1.05; }
+    .contact-heading em { font-style: italic; color: var(--ink-mid); }
+    .contact-cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 2rem; font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border: 0.5px solid var(--ink-xlight); padding: 14px 22px; border-radius: 2px; transition: background 0.2s, border-color 0.2s; }
+    .contact-cta:hover { background: var(--paper-warm); border-color: var(--ink-light); }
+    .contact-details { display: flex; flex-direction: column; }
+    .contact-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 0.5px solid var(--ink-xlight); }
+    .contact-row:first-child { border-top: 0.5px solid var(--ink-xlight); }
+    .contact-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
+    .contact-val { font-size: 14px; color: var(--ink); text-decoration: none; }
+    .contact-val:hover { color: var(--ink-mid); }
+    .available { color: var(--green) !important; }
+
+    /* ── FOOTER ── */
+    .footer { border-top: 0.5px solid var(--ink-xlight); padding: 2rem var(--pad); }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy, .footer-role { font-size: 12px; color: var(--ink-light); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .hero      { animation: fadeUp 0.6s ease both; }
+    .showreel  { animation: fadeUp 0.6s 0.08s ease both; }
+    .portfolio { animation: fadeUp 0.6s 0.12s ease both; }
+    .about     { animation: fadeUp 0.6s 0.16s ease both; }
+    .contact   { animation: fadeUp 0.6s 0.20s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-desc { max-width: 100%; }
+      .card-full { flex-direction: column !important; }
+      .card-full .card-thumb { width: 100% !important; aspect-ratio: 16/9 !important; }
+      .card-full .card-body { padding-right: 0; }
+      .card-half  { grid-column: span 12; }
+      .card-third { grid-column: span 6; }
+      .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about-sticky { position: static; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .card-third { grid-column: span 12; }
+      .portfolio-header { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
 </head>
+<body>
 
-<body data-bs-spy="scroll" data-bs-target=".navigation-area" class="foil">
-	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		Start Site Header
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-	<header class="site-header default-header-style">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-12">
-					<div class="navigation-area">
-						<!-- Site Branding -->
-						<div class="site-branding">
-							<a href="index.html">
-								<img src="LOGO.svg" alt="AK Logo" />
-							</a>
-						</div><!--  /.site-branding -->
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">Alex Kielesinska</a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#showreel">Showreel</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="Alex Kielesinska CV.pdf" target="_blank" rel="noopener">Resume &#x2197;</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="#showreel">Showreel</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="Alex Kielesinska CV.pdf" target="_blank" rel="noopener">Resume &#x2197;</a>
+  </nav>
+</header>
 
-						<!-- Site Navigation -->
-						<div class="site-navigation">
-							<nav class="navigation">
-								<!-- Main Menu -->
-								<div class="menu-wrapper">
-									<div class="menu-content">
-										<ul class="mainmenu">
-											<li>
-												<a class="nav-link" href="#hero-block">Home</a>
-											</li>
-											
-											<li>
-												<a class="nav-link" href="#about-block">About</a>
-											</li>
-											<li>
-												<a class="nav-link" href="#portfolio-block">Portfolio</a>
-											</li>
-											
-											<li>
-												<a class="nav-link" href="#contact-block">Contact</a>
-											</li>
-										</ul> <!-- /.menu-list -->
-									</div> <!-- /.hours-content-->
-								</div><!-- /.menu-wrapper -->
-							</nav>
-						</div><!-- /.site-navigation -->
-						<div class="hamburger-menus">
-							<span></span>
-							<span></span>
-							<span></span>
-						</div><!-- /.hamburger-menus -->
-					</div><!-- /.navigation-area -->
-				</div><!-- /.col-12 -->
-			</div><!-- /.row -->
-		</div><!-- /.container-fluid -->
-		<div class="mobile-sidebar-menu sidebar-menu">
-			<div class="overlaybg"></div>
-		</div>
-	</header>
-	<!--~~./ end site header ~~-->
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div>
+    <h1 class="hero-title">
+      Creative<br>
+      <em>designer &amp;</em><br>
+      XR developer
+    </h1>
+  </div>
+  <div>
+    <p class="hero-desc">
+      London-based creative and motion designer with 5+ years delivering campaigns for Warner&nbsp;Bros.&nbsp;Discovery, Disney, and the&nbsp;Financial&nbsp;Times — combining motion graphics, broadcast post-production, and hands-on XR&nbsp;development.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Motion Design</span>
+      <span class="tag">XR / AR</span>
+      <span class="tag">Broadcast GFX</span>
+      <span class="tag">Event Design</span>
+      <span class="tag">London</span>
+    </div>
+  </div>
+</section>
 
-	<!--********************************************************-->
-	<!--********************* SITE CONTENT *********************-->
-	<!--********************************************************-->
-	<div class="site-content">
-		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				Hero Block
-		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-		<div id="hero-block" class="hero-block personal-home bg-image particles-version"
-		style="background-image: url('public/images/gradient.png');">
-		<div id="particles-js"></div>
-		
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="hero-content-area">
-							
-							<h2 class="hero-title">
-								Alex Kielesinska
-							</h2><!-- /.hero-title -->
-							<ul class="hero-services eyebrow">
-								<li>Creative Designer</li>
-								<li>Motion Designer</li>
-								<li>XR Developer</li>
-							</ul>
-							<br>
-						</div><!-- /.hero-content-area -->
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<!-- /.hero-block -->
+<!-- SHOWREEL -->
+<section class="showreel" id="showreel">
+  <div class="showreel-inner">
+    <div class="section-header">
+      <h2 class="section-title">Showreel 2023</h2>
+      <span class="eyebrow">Motion Graphics</span>
+    </div>
+    <div class="video-wrap">
+      <iframe
+        src="https://player.vimeo.com/video/899192533?badge=0&autopause=0&player_id=0&app_id=58479"
+        allow="autoplay; fullscreen; picture-in-picture"
+        title="Alex Kielesinska Showreel 2023">
+      </iframe>
+    </div>
+  </div>
+</section>
+<script src="https://player.vimeo.com/api/player.js"></script>
 
-		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			Start Services Block
-		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-		<div id="service-block" class="services-block pd-t-170">
-			<div class="container container-1200">
-				<div class="row justify-content-center">
-					<div class="col-lg-8">
-						<div class="section-title text-center">
-							<p class="eyebrow">MOTION GRAPHICS</p>
-							<h2 class="title-main">
-								<span>Showreel</span>
-							</h2><!-- /.title-main -->
+<!-- PORTFOLIO -->
+<section class="portfolio" id="work">
+  <div class="portfolio-inner">
+    <div class="portfolio-header">
+      <h2 class="section-title">Selected work</h2>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="gd">Graphic Design</button>
+        <button class="filter-btn" data-filter="md">Motion</button>
+        <button class="filter-btn" data-filter="vr">AR / XR</button>
+      </div>
+    </div>
 
-						</div><!-- /.section-title -->
-					</div><!-- /.col-lg-8 -->
-				</div><!-- /.row -->
+    <div class="grid" id="grid">
 
-				<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/899192533?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Showreel 2023"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+      <!-- 1 Disney TLM — featured -->
+      <a class="card card-full" href="TLM Disney.html" data-cats="gd md">
+        <div class="card-body">
+          <p class="card-eyebrow">Disney &middot; EMEA Marketing Campaign</p>
+          <h3 class="card-title">The Little Mermaid</h3>
+          <p class="card-desc">Full EMEA campaign for The Walt Disney Company's 2023 theatrical release — spanning social reels, YouTube, digital OOH, and retail across 15+ European markets.</p>
+        </div>
+        <div class="card-thumb"><img src="public/images/tlg.png" alt="Disney The Little Mermaid campaign" loading="lazy"></div>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-				
-			</div><!-- /.container -->
-		</div>
-		<!--~~./ end services block ~~-->
+      <!-- 2 AR Art Tate -->
+      <a class="card card-half" href="Tate.html" data-cats="vr">
+        <div class="card-thumb"><img src="public/images/1ea64ca03d49a8c8e50a51264db25251.png" alt="AR Art Tate Museum" loading="lazy"></div>
+        <p class="card-eyebrow">Tate Museum &middot; AR Application</p>
+        <h3 class="card-title">"AR Art" — Tate Museum</h3>
+        <p class="card-desc">Augmented reality application bridging Tate's physical artworks with interactive digital layers for gallery visitors.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			Start About Us Block
-		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-		<div id="about-block" class="about-us-block pd-t-170">
-			<div class="container container-1200">
-				<div class="row justify-content-center">
-					<div class="col-lg-8">
-						<div class="section-title text-center">
-							<h2 class="title-main ">
-								<span>About</span>
-							</h2><!-- /.title-main -->
-							<p class="sub-title"></p>
-						</div><!-- /.section-title -->
-					</div><!-- /.col-lg-8 -->
-				</div><!-- /.row -->
+      <!-- 3 FT Live -->
+      <a class="card card-half" href="FTLive.html" data-cats="gd md">
+        <div class="card-thumb"><img src="public/images/ainon.jpeg" alt="Financial Times Live events" loading="lazy"></div>
+        <p class="card-eyebrow">Financial Times &middot; Event Design</p>
+        <h3 class="card-title">Financial Times Live</h3>
+        <p class="card-desc">Full event design and digital marketing for FTLive's global conference programme — stage environments, LED installations, signage, and digital branding systems.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-				<div class="row align-items-center flex-column-reverse flex-lg-row mrb-55">
-					<div class="col-lg-6">
-						<div class="about-content">
-							<h3 class="maintitles">Hi, I'm Alex</h3>
-							<br>
-							<p>Creative designer based in London, UK.
-								Over the years, I've had the privilege of working with a variety of high-profile clients, including Financial Times Live, The Walt Disney Company, Lego, and many more.
-								
-								I pride myself on thinking outside of the box to deliver projects that are both visually stunning and technically advanced. My goal is to push the boundaries of what's possible in the world technology and art, and to create experiences that are truly unforgettable. </p>
-							<p>Please feel free to get in touch! I am always open for new opportunities and exciting projects.</p>
-							
-							<br>
+      <!-- 4 FTLive Brand Video -->
+      <a class="card card-third" href="FTbrandvideo.html" data-cats="md">
+        <div class="card-thumb"><img src="public/images/ff7f55eba8d7ad26c0101244df010022.png" alt="FTLive Brand Video" loading="lazy"></div>
+        <p class="card-eyebrow">Financial Times &middot; Motion</p>
+        <h3 class="card-title">FTLive Brand Video</h3>
+        <p class="card-desc">Motion-led brand video series promoting FTLive events to a global audience.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-							<a href="Alex Kielesinska CV.pdf" download>
-							<button class="custom-btn btn-16 selected">Resume</button>
-							</a>
+      <!-- 5 Find Your Wonder -->
+      <a class="card card-third" href="find your wonder.html" data-cats="gd md">
+        <div class="card-thumb"><img src="public/images/findnon.png" alt="Disney Find Your Wonder" loading="lazy"></div>
+        <p class="card-eyebrow">Disney &middot; YouTube Series</p>
+        <h3 class="card-title">Find Your Wonder</h3>
+        <p class="card-desc">YouTube webisode series combining motion graphics and editorial storytelling to reach European audiences at scale.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-							
-						</div><!-- /.about-content -->
-						
-						<!-- /.logos-about -->
+      <!-- 6 Disney Wish -->
+      <a class="card card-third" href="Wish.html" data-cats="gd md">
+        <div class="card-thumb"><img src="public/images/wishnon.png" alt="Disney Wish 2023" loading="lazy"></div>
+        <p class="card-eyebrow">Disney &middot; Holiday Campaign 2023</p>
+        <h3 class="card-title">Disney Wish</h3>
+        <p class="card-desc">GFX packages and motion assets for the Disney Wish EMEA holiday campaign, localised across European territories.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-						<div class="strap">
-							<div class="col-lg-6">
+      <!-- 7 Disney Holiday 2022 -->
+      <a class="card card-half" href="TWOP 2022.html" data-cats="gd">
+        <div class="card-thumb"><img src="public/images/txopnon.png" alt="Disney Holiday 2022" loading="lazy"></div>
+        <p class="card-eyebrow">Disney &middot; Holiday Campaign 2022</p>
+        <h3 class="card-title">Disney Holiday 2022</h3>
+        <p class="card-desc">EMEA Disney holiday campaign — brand-consistent motion and graphic assets delivered across 15+ markets.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
+      <!-- 8 Animal Portal -->
+      <a class="card card-half" href="AnimalPortal.html" data-cats="vr">
+        <div class="card-thumb"><img src="public/images/animnon.png" alt="AR Book Animal Portal" loading="lazy"></div>
+        <p class="card-eyebrow">Publishing &middot; AR Experience</p>
+        <h3 class="card-title">AR Book — Animal Portal</h3>
+        <p class="card-desc">AR experience layered over a physical book, bringing 3D animated animals to life through the device camera.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-							</div>
-						</div>
-						<!-- /. end-logos-about -->
+      <!-- 9 AR Exhibition -->
+      <a class="card card-third" href="AR Exhibition.html" data-cats="vr">
+        <div class="card-thumb"><img src="public/images/exhi.png" alt="AR Exhibition on Snap" loading="lazy"></div>
+        <p class="card-eyebrow">Snap &middot; AR Exhibition</p>
+        <h3 class="card-title">AR Exhibition</h3>
+        <p class="card-desc">Art exhibition distributed as AR lenses on Snapchat, making the work accessible to a global digital audience.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-					</div><!-- /.col-lg-6 -->
-					<div class="col-lg-6">
-						<div class="mock-up-thumb">
-							<div class="d-flex justify-content-center">
-							<video class="about-animation" autoplay loop muted playsinline>
-								<source 
-									src="public/videos-hevc-safari.mp4" 
-									type='video/mp4; codecs="hvc1"'>
-								<source 
-									src="public/videos-vp9-chrome.webm" 
-									type="video/webm">
-							</video>
-						</div>
-						</div><!-- /.mock-up-block -->
-					</div><!-- /.col-lg-6 -->
-				</div><!-- /.row -->					
-		</div>
-		<!--~~./ end about us block ~~-->
+      <!-- 10 LED Stage Design -->
+      <a class="card card-third" href="FTLive.html" data-cats="gd md">
+        <div class="card-thumb"><img src="public/images/21e502aff19ceea3542ed19642c2eccf.jpeg" alt="LED Stage Design FTLive" loading="lazy"></div>
+        <p class="card-eyebrow">Financial Times &middot; Stage Design</p>
+        <h3 class="card-title">LED Stage Design</h3>
+        <p class="card-desc">Large-scale LED stage environments and digital signage systems for FTLive flagship conferences.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			Start Portfolio Block
-		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-		<div id="portfolio-block" class="portfolio-block pd-t-170">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-8">
-						<div class="section-title text-center">
-							<h2 class="title-main">
-								<span>Selected projects</span>
-							</h2><!-- /.title-main -->
-							<p class="sub-title"></p>
-						</div><!-- /.section-title -->
-					</div><!-- /.col-lg-8 -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
+      <!-- 11 FTWeekend AR -->
+      <a class="card card-third" href="ARFT.html" data-cats="vr">
+        <div class="card-thumb"><img src="public/images/FTWTnon.png" alt="FTWeekend Festival AR Lenses" loading="lazy"></div>
+        <p class="card-eyebrow">FT Weekend &middot; AR / Live Events</p>
+        <h3 class="card-title">FTWeekend Festival — AR</h3>
+        <p class="card-desc">Prototype AR lenses extending the FT Weekend Festival live experience digitally via Snapchat.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-			<div class="container custom-container-1650">
-				<div class="row">
-					<div class="col-12 text-center">
-						<ul class="portfolio-filter">
-							<li>
-								<a href="#" data-filter="*" class="filter active ">All</a>
-							</li>
-							<li>
-								<a href="#" data-filter=".gd" class="filter ">Graphic Design</a>
-							</li>
-							<li>
-								<a href="#" data-filter=".md" class="filter ">Motion Design</a>
-							</li>
-							<li>
-								<a href="#" data-filter=".vr" class="filter ">VR/AR</a>
-							</li>
-							
-						</ul>
-					</div><!-- /.col-12 -->
-				</div><!-- /.row -->
-				<div class="row portfolio-grid gutters-40">
-					<div class="item col-lg-4 col-xl-3 col-md-6 gd md ">
-						<a class="portfolio-item" href="TLM Disney.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/tlg.png" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">EMEA Marketing Campaign</p>
-									<h3 class="heading">Disney The Little Mermaid</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
+      <!-- 12 TNW Conference -->
+      <a class="card card-half" href="TNW.html" data-cats="gd md">
+        <div class="card-thumb"><img src="public/Frame 5.png" alt="TNW Conference 2024" loading="lazy"></div>
+        <p class="card-eyebrow">TNW &middot; Event Design 2024</p>
+        <h3 class="card-title">TNW Conference 2024</h3>
+        <p class="card-desc">Full event design for TNW Conference 2024 in Amsterdam — stage, branding, and digital environments.</p>
+        <span class="card-arrow">&#x2197;</span>
+      </a>
 
-					<div class="item col-lg-4 col-xl-3 col-md-6 vr ">
-						<a class="portfolio-item" href="Tate.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/1ea64ca03d49a8c8e50a51264db25251.png" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#photi"> 
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">AR Application</p>
-									<h3 class="heading">"AR Art" - Tate Museum</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
+    </div>
+  </div>
+</section>
 
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-sticky">
+        <span class="eyebrow">About</span>
+        <h2 class="about-section-title">Hi, I'm Alex</h2>
+      </div>
+    </div>
+    <div>
+      <p class="about-text">
+        <strong>Creative and motion designer based in London</strong>, with 5+ years delivering high-impact work for Warner Bros. Discovery, The Walt Disney Company, and the Financial Times. I specialise in 2D/3D motion graphics, broadcast post-production, and XR/AR development — combining rigorous technical execution with bold visual storytelling.
+      </p>
+      <p class="about-text">
+        I hold an <strong>MA in Virtual &amp; Augmented Reality from Goldsmiths</strong>, and have shipped AR experiences for institutions including the Tate Museum and Snap. I pride myself on pushing the boundaries of what's possible at the intersection of technology and art — creating experiences that are truly unforgettable.
+      </p>
+      <p class="about-text">
+        I'm always open to ambitious new projects. Please feel free to get in touch.
+      </p>
 
+      <div class="exp-list" aria-label="Work history">
+        <div class="exp-row">
+          <div><div class="exp-company">Warner Bros. Discovery</div><div class="exp-role">Promo Packaging &amp; GFX Editor</div></div>
+          <span class="exp-dates">2024 – Present</span>
+        </div>
+        <div class="exp-row">
+          <div><div class="exp-company">Financial Times Live</div><div class="exp-role">Designer</div></div>
+          <span class="exp-dates">2022 – 2024</span>
+        </div>
+        <div class="exp-row">
+          <div><div class="exp-company">The Walt Disney Company</div><div class="exp-role">Creative Designer (Freelance)</div></div>
+          <span class="exp-dates">2022 – 2023</span>
+        </div>
+        <div class="exp-row">
+          <div><div class="exp-company">Pattern Atelier</div><div class="exp-role">Graphic Designer &amp; Illustrator</div></div>
+          <span class="exp-dates">2021 – 2022</span>
+        </div>
+      </div>
 
-					<div class="item col-lg-4 col-xl-3 col-md-6 md ">
-						<a class="portfolio-item" href="find your wonder.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/findnon.png" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#photi">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">YouTube serie of webisodes</p>
-									<h3 class="heading">Disney Find Your Wonder</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
+      <a class="resume-link" href="Alex Kielesinska CV.pdf" target="_blank" rel="noopener">Download Resume &#x2197;</a>
 
-					<div class="item col-lg-4 col-xl-3 col-md-6 print md ">
-						<a class="portfolio-item" href="FTbrandvideo.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/ff7f55eba8d7ad26c0101244df010022.png" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#photi">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">Video promoting FTLive events</p>
-									<h3 class="heading">FTLive Brand video</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
+      <div class="clients" aria-label="Selected clients">
+        <span class="client">Warner Bros. Discovery</span>
+        <span class="client">Disney</span>
+        <span class="client">Financial Times</span>
+        <span class="client">Lego</span>
+        <span class="client">Tate Museum</span>
+        <span class="client">TNW</span>
+        <span class="client">Snap</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-					<div class="item col-lg-4 col-xl-3 col-md-6 gd ">
-						<a class="portfolio-item" href="FTLive.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/ainon.jpeg" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#photi">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">Event design and digital marketing</p>
-									<h3 class="heading">Financial Times Live</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-heading">Open to new<br><em>projects</em></h2>
+      <a class="contact-cta" href="mailto:kieleax@gmail.com">Get in touch &#x2197;</a>
+    </div>
+    <div class="contact-details">
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <a class="contact-val" href="mailto:kieleax@gmail.com">kieleax@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Phone</span>
+        <a class="contact-val" href="tel:+447727120534">+44 7727 120 534</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Location</span>
+        <span class="contact-val">London, UK</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">LinkedIn</span>
+        <a class="contact-val" href="https://linkedin.com/in/axkielesinska" target="_blank" rel="noopener">axkielesinska &#x2197;</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Availability</span>
+        <span class="contact-val available">Open to projects</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-					<div class="item col-lg-4 col-xl-3 col-md-6 md gd">
-						<a class="portfolio-item" href="Wish.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/wishnon.png" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#photi">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">EMEA Disney holiday campaign</p>
-									<h3 class="heading">Disney Wish 2023</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; Alex Kielesinska 2025</span>
+    <span class="footer-role">Creative Designer &middot; Motion &middot; XR &middot; London</span>
+  </div>
+</footer>
 
-					<div class="item col-lg-4 col-xl-3 col-md-6 gd ">
-						<a class="portfolio-item" href="TWOP 2022.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/txopnon.png" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#photi">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">EMEA Disney holiday campaign</p>
-									<h3 class="heading">Disney Holiday 2022</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
+<script>
+  // Mobile nav
+  const toggle = document.getElementById('navToggle');
+  const menu   = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); toggle.classList.remove('open');
+  }));
 
-					<div class="item col-lg-4 col-xl-3 col-md-6 vr overlay" >
-						<a class="portfolio-item " href="AnimalPortal.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/animnon.png" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#photi">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">AR experience with the book</p>
-									<h3 class="heading">AR Book - Animal Portal</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
-
-					<div class="item col-lg-4 col-xl-3 col-md-6 print vr ">
-						<a class="portfolio-item" href="AR Exhibition.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/exhi.png" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#myModal">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">Art exhibition on Snap</p>
-									<h3 class="heading">AR Exhibition</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
-
-					<div class="item col-lg-4 col-xl-3 col-md-6 md gd ">
-						<a class="portfolio-item" href="FTLive.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/21e502aff19ceea3542ed19642c2eccf.jpeg" alt="portfolio Item">
-							</figure><!-- /.portfolio-thumb -->
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#myModal">
-								<div class="overlay"></div><!-- /.overlay -->
-								<div class="portfolio-info">
-									<p class="cat">Event design for FTLive</p>
-									<h3 class="heading">LED Stage design</h3>
-								</div><!-- /.portfolio-info -->
-							</div><!-- /.overlay-wrapper -->
-						</a><!-- /.portfolio-item -->
-					</div><!-- /.col-xl-3 -->
-
-					<div class="item col-lg-4 col-xl-3 col-md-6 vr">
-						<a class="portfolio-item" href="ARFT.html">
-							<figure class="portfolio-thumb">
-								<img src="public/images/FTWTnon.png" alt="portfolio Item">
-							</figure>
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#photi">
-								<div class="overlay"></div>
-								<div class="portfolio-info">
-									<p class="cat">Prototype of AR lenses for live events</p>
-									<h3 class="heading">FTWeekend Festival - AR</h3>
-								</div>
-							</div>
-						</a>
-					</div>
-
-					<div class="overlay-wrapper" data-toggle="modal" data-target="#myModal">
-					<div class="item col-lg-4 col-xl-3 col-md-6 md gd ">
-						<a class="portfolio-item" href="TNW.html">
-							<figure class="portfolio-thumb">
-								<img src="public/Frame 5.png" alt="portfolio Item">
-							</figure>
-							<div class="overlay-wrapper" data-toggle="modal" data-target="#myModal">
-								<div class="overlay"></div>
-								<div class="portfolio-info">
-									<p class="cat">Event design</p>
-									<h3 class="heading">TNW Conference 2024</h3>
-								</div>
-							</div>
-						</a>
-					</div>
-
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div>
-		
-		<!--~~./ end portfolio block ~~-->
-
-		
-		
-
-
-		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			Start Site Footer
-		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-		<footer id="contact-block" class="site-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="contact-block">
-							<div class="section-title">
-								<h2 class="title-main">
-								<span>Contact</span>
-								</h2><!-- /.title-main -->
-							</div><!-- /.section-title -->
-							<div class="contact-form-area">
-								<form id="contact_form" class="contact-form" action="#">
-									<div class="row gx-4">
-										<div class="col-lg-6 col-md-6">
-											<div class="form-group">
-												<input id="name" name="name" type="text" class="form-control" placeholder="Your Name*">
-											</div>
-										</div>
-										<!--./ col-lg-6-->
-										<div class="col-lg-6 col-md-6">
-											<div class="form-group">
-												<input class="form-control" id="email" name="email" type="email" placeholder="Your Email*">
-											</div>
-										</div>
-										<!--./ col-lg-6 -->
-										<div class="col-12">
-											<div class="form-group">
-												<textarea id="message" name="message" class="form-control" rows="4"
-													placeholder="How can I help?"></textarea>
-											</div>
-										</div><!-- /.col-12 -->
-										<div class="col-12">
-											<br>
-											<button type="submit"  class="custom-btn btn-16">Send!</button>
-										</div>
-										<!--./ col-lg-6 -->
-									</div><!-- /.row -->
-								</form><!-- /.contact-form -->
-							</div><!-- /.contact-form-area -->
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="footer-content-wrapper">
-							<div class="footer-widget-area">
-								<div class="row">
-									
-									<!--~~~~~ Start Widget Links ~~~~~-->
-									<div class="col-lg-6 col-md-6">
-										<aside class="widget widget_contact">
-											<div class="widget-content">
-												<div class="single-contact-info">
-													<div class="icon">
-														<i class="fas fa-envelope"></i>
-													</div>
-													<p><a href="mailto:kieleax@gmail.com">kieleax@gmail.com</a></p>
-												</div><!-- /.single-contact-info -->
-												<div class="single-contact-info">
-													<div class="icon">
-														<i class="fas fa-phone-alt"></i>
-													</div>
-													<p>+44 7727120534</p>
-												</div><!-- /.single-contact-info -->
-											</div>
-										</aside>
-									</div>
-									<!--~./ end links widget ~-->
-								</div>
-							</div>
-							<!--~./ end footer widgets area ~-->
-							<div class="copyright-text text-center">
-								<p>Copyright @ <a href="#">Alex Kielesinska </a> 2023</p>
-							</div>
-							<!--~./ end copyright text ~-->
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!--~./ end site footer ~-->
-	</div>
-	<!--~~./ end site content ~~-->
-
-
-</div>
-
-
-
-	<!-- All The JS Files
-			================================================== -->
-	<script src="assets/js/jquery.js"></script>
-	<script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/plugins.js"></script>
-	<script src="assets/js/imagesloaded.pkgd.min.js"></script>
-	<script src="assets/js/simple-scrollbar.min.js"></script>
-	<script src="assets/js/background-parallax.js"></script>
-	<script src="assets/js/theia-sticky-sidebar.min.js"></script>
-	<script src="assets/js/ResizeSensor.min.js"></script>
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<script src="assets/js/isotope.pkgd.min.js"></script>
-	<script src="assets/js/packery-mode.pkgd.min.js"></script>
-	<script src="assets/js/scrolla.jquery.min.js"></script>
-	<script src="assets/js/odometer.min.js"></script>
-	<script src="assets/js/isInViewport.jquery.js"></script>
-	<script src="assets/js/contact.js"></script>
-	<script src="assets/js/main.js"></script>
-	<!-- main-js -->
+  // Portfolio filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards      = document.querySelectorAll('.card[data-cats]');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        if (f === 'all' || card.dataset.cats.split(' ').includes(f)) {
+          card.removeAttribute('data-hidden');
+        } else {
+          card.setAttribute('data-hidden', '');
+        }
+      });
+    });
+  });
+</script>
 </body>
-
 </html>
