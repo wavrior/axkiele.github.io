@@ -1,204 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aleksandra Kielesinska — Creative & Motion Designer, XR Developer. London-based, working globally with Disney, Warner Bros. Discovery, Financial Times and more." />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Aleksandra Kielesinska — Creative & Motion Designer, XR Developer. London-based, working globally with Disney, Warner Bros. Discovery, Financial Times and more."/>
   <title>Alex Kielesinska</title>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2NJX9M6K8"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
+    window.dataLayer=window.dataLayer||[];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-E2NJX9M6K8');
+    gtag('js',new Date());
+    gtag('config','G-E2NJX9M6K8');
   </script>
 
-  <link rel="shortcut icon" href="AK black.svg" />
-  <link rel="apple-touch-icon" href="AK black.svg" />
+  <link rel="shortcut icon" href="AK black.svg"/>
+  <link rel="apple-touch-icon" href="AK black.svg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --bg:#f5f0e8;
+      --bg2:#ede8df;
+      --bg3:#e6e0d6;
+      --rule:#d4cdc0;
+      --txt:#1a1916;
+      --mid:#6b6660;
+      --dim:#a8a29a;
+      --acc:#7c5c2e;
+      --acc2:#b8893a;
+      --serif:'Instrument Serif',Georgia,serif;
+      --display:'Bebas Neue',Impact,sans-serif;
+      --sans:'DM Sans',system-ui,sans-serif;
+      --pad:clamp(24px,5vw,60px);
+      --max:1200px;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);font-weight:300;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
-    :root {
-      --ink: #111110;
-      --ink-mid: #6b6b67;
-      --ink-light: #a8a8a3;
-      --ink-xlight: #d8d8d3;
-      --paper: #f9f8f5;
-      --paper-warm: #f2f0eb;
-      --serif: 'DM Serif Display', Georgia, serif;
-      --sans: 'DM Sans', system-ui, sans-serif;
-      --max: 1160px;
-      --pad: clamp(24px, 5vw, 80px);
-      --green: #4a7c59;
+    /* MAGIC CANVAS */
+    #magic-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+    .site-wrap{position:relative;z-index:1;}
+
+    /* CURSOR SPARKLE */
+    .sparkle{
+      position:fixed;pointer-events:none;z-index:9999;
+      animation:sparkle-out 0.7s ease forwards;
+    }
+    @keyframes sparkle-out{
+      0%{opacity:1;transform:scale(1) translate(0,0) rotate(0deg);}
+      100%{opacity:0;transform:scale(0.2) translate(var(--tx),var(--ty)) rotate(180deg);}
     }
 
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--sans);
-      font-weight: 300;
-      background: var(--paper);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
+    /* NAV */
+    .nav{
+      background:rgba(245,240,232,0.93);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--rule);
+      position:sticky;top:0;z-index:100;
     }
-
-    /* ── NAV ── */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--paper);
-      border-bottom: 0.5px solid var(--ink-xlight);
+    .nav-inner{
+      max-width:var(--max);margin:0 auto;
+      padding:0 var(--pad);height:62px;
+      display:flex;align-items:center;justify-content:space-between;
     }
-    .nav-inner {
-      max-width: var(--max); margin: 0 auto;
-      padding: 0 var(--pad); height: 64px;
-      display: flex; align-items: center; justify-content: space-between;
+    .nav-logo{font-family:var(--display);font-size:21px;letter-spacing:0.06em;color:var(--txt);text-decoration:none;}
+    .nav-links{display:flex;gap:28px;list-style:none;}
+    .nav-links a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--acc);}
+    .nav-resume{color:var(--acc) !important;}
+
+    .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .nav-toggle span{display:block;width:22px;height:1px;background:var(--txt);transition:transform 0.3s,opacity 0.3s;}
+    .nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+    .nav-toggle.open span:nth-child(2){opacity:0;}
+    .nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+    .mobile-menu{display:none;flex-direction:column;border-top:1px solid var(--rule);}
+    .mobile-menu a{display:block;padding:15px var(--pad);font-size:12px;font-weight:400;letter-spacing:0.09em;text-transform:uppercase;color:var(--mid);text-decoration:none;border-bottom:1px solid var(--rule);}
+    .mobile-menu.open{display:flex;}
+
+    /* HERO */
+    .hero{
+      max-width:var(--max);margin:0 auto;
+      padding:clamp(50px,9vw,110px) var(--pad) clamp(50px,7vw,90px);
+      display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:end;
     }
-    .nav-logo { font-family: var(--serif); font-size: 17px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--ink); }
-
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .nav-toggle span { display: block; width: 22px; height: 1px; background: var(--ink); transition: transform 0.3s, opacity 0.3s; }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-    .mobile-menu { display: none; flex-direction: column; }
-    .mobile-menu a { display: block; padding: 16px var(--pad); font-size: 13px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; border-bottom: 0.5px solid var(--ink-xlight); }
-    .mobile-menu.open { display: flex; }
-
-    /* ── HERO ── */
-    .hero {
-      max-width: var(--max); margin: 0 auto;
-      padding: clamp(60px, 10vw, 120px) var(--pad) clamp(60px, 8vw, 100px);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end;
+    .hero-title{font-family:var(--display);font-size:clamp(76px,13vw,130px);line-height:0.9;letter-spacing:0.02em;color:var(--txt);}
+    .hero-title span{display:block;}
+    .hero-title .italic{font-family:var(--serif);font-style:italic;color:var(--acc);}
+    .star-glyph{
+      font-size:0.28em;color:var(--acc2);opacity:0.7;
+      display:inline-block;vertical-align:middle;margin-left:10px;
+      animation:twinkle 3.5s ease-in-out infinite;
+      line-height:1;position:relative;top:-4px;
     }
-    .hero-title { font-family: var(--serif); font-size: clamp(44px, 6.5vw, 76px); line-height: 1.02; letter-spacing: -0.025em; font-weight: 400; }
-    .hero-title em { font-style: italic; color: var(--ink-mid); }
-    .hero-desc { font-size: 15px; line-height: 1.8; color: var(--ink-mid); margin-bottom: 2rem; max-width: 380px; }
-    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tag { display: inline-block; font-size: 10px; font-weight: 400; letter-spacing: 0.11em; text-transform: uppercase; padding: 6px 14px; border: 0.5px solid var(--ink-xlight); border-radius: 100px; color: var(--ink-mid); }
+    @keyframes twinkle{0%,100%{opacity:0.7;transform:scale(1) rotate(0deg);}50%{opacity:1;transform:scale(1.2) rotate(18deg);}}
+    .hero-desc{font-size:14px;line-height:1.8;color:var(--mid);margin-bottom:22px;max-width:360px;}
+    .hero-tags{display:flex;gap:7px;flex-wrap:wrap;}
+    .tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--rule);color:var(--dim);background:var(--bg2);}
 
-    /* ── SHOWREEL ── */
-    .showreel { border-top: 0.5px solid var(--ink-xlight); padding: clamp(60px, 8vw, 100px) var(--pad); }
-    .showreel-inner { max-width: var(--max); margin: 0 auto; }
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; }
-    .section-title { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 38px); font-weight: 400; letter-spacing: -0.015em; }
-    .eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-light); }
-    .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; }
-    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    /* TICKER */
+    .ticker-wrap{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);overflow:hidden;padding:11px 0;background:var(--bg2);}
+    .ticker{display:flex;gap:0;white-space:nowrap;animation:scroll 24s linear infinite;}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ticker-item{font-family:var(--display);font-size:13px;letter-spacing:0.12em;color:var(--dim);padding:0 28px;text-transform:uppercase;}
+    .ticker-dot{color:var(--acc2);}
 
-    /* ── PORTFOLIO ── */
-    .portfolio { border-top: 0.5px solid var(--ink-xlight); padding: clamp(60px, 8vw, 100px) var(--pad); }
-    .portfolio-inner { max-width: var(--max); margin: 0 auto; }
-    .portfolio-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
-    .filters { display: flex; gap: 1.5rem; }
-    .filter-btn { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.2s; }
-    .filter-btn.active, .filter-btn:hover { color: var(--ink); }
+    /* SHOWREEL */
+    .showreel{border-top:1px solid var(--rule);padding:clamp(50px,7vw,90px) var(--pad);}
+    .section-wrap{max-width:var(--max);margin:0 auto;}
+    .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;}
+    .section-title{font-family:var(--display);font-size:clamp(32px,4vw,46px);letter-spacing:0.04em;color:var(--txt);}
+    .eyebrow{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--dim);}
+    .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:2px;}
+    .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
 
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; background: var(--ink-xlight); border: 0.5px solid var(--ink-xlight); }
+    /* PORTFOLIO */
+    .portfolio{border-top:1px solid var(--rule);padding:clamp(50px,7vw,90px) var(--pad);}
+    .port-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+    .filters{display:flex;gap:18px;}
+    .fbtn{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim);background:none;border:none;cursor:pointer;padding:0;transition:color 0.2s;}
+    .fbtn.active,.fbtn:hover{color:var(--acc);}
 
-    .card { background: var(--paper); padding: 2rem 2rem 2.5rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: background 0.25s; position: relative; overflow: hidden; }
-    .card:hover { background: var(--paper-warm); }
-    .card:hover .card-arrow { opacity: 1; transform: translate(0,0); }
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);}
+    .card{background:var(--bg);text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden;}
+    .card-full{grid-column:1/-1;}
+    .card-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--bg2);}
+    .card-full .card-img{aspect-ratio:21/9;}
+    .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.65s ease;}
+    .card:hover .card-img img{transform:scale(1.04);}
+    .card-static{position:absolute;bottom:0;left:0;right:0;padding:18px 22px;background:linear-gradient(transparent,rgba(245,240,232,0.96));}
+    .card-overlay{position:absolute;inset:0;background:rgba(245,240,232,0.88);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;}
+    .card:hover .card-overlay{opacity:1;}
+    .card-info{padding:22px;}
+    .card-eyebrow{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--acc);margin-bottom:5px;}
+    .card-title{font-family:var(--display);font-size:clamp(22px,3vw,30px);letter-spacing:0.04em;color:var(--txt);line-height:1;}
+    .card-full .card-title{font-size:clamp(30px,4.5vw,48px);}
+    .card-desc{font-size:12px;color:var(--mid);margin-top:6px;line-height:1.6;}
+    .card[data-hidden]{display:none;}
 
-    .card-full  { grid-column: span 12; flex-direction: row; align-items: center; gap: 3rem; }
-    .card-half  { grid-column: span 6; }
-    .card-third { grid-column: span 4; }
+    /* CONSTELLATION DIVIDER */
+    .const-strip{border-bottom:1px solid var(--rule);padding:14px var(--pad);background:var(--bg2);overflow:hidden;}
+    .const-svg{width:100%;height:34px;opacity:0.32;}
 
-    .card-arrow { position: absolute; top: 2rem; right: 2rem; font-size: 18px; color: var(--ink-light); opacity: 0; transition: opacity 0.25s, transform 0.25s; transform: translate(-6px, 6px); line-height: 1; }
+    /* ABOUT */
+    .about{border-top:1px solid var(--rule);padding:clamp(50px,7vw,90px) var(--pad);}
+    .about-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+    .about-watermark{font-family:var(--display);font-size:88px;letter-spacing:0.03em;color:var(--rule);line-height:1;margin-bottom:14px;user-select:none;}
+    .about-text{font-size:14px;line-height:1.85;color:var(--mid);margin-bottom:14px;}
+    .about-text strong{color:var(--txt);font-weight:400;}
+    .resume-btn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bg);background:var(--txt);padding:12px 20px;text-decoration:none;transition:background 0.2s;}
+    .resume-btn:hover{background:var(--acc);}
+    .exp-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--rule);}
+    .exp-row:first-child{border-top:1px solid var(--rule);}
+    .exp-co{font-size:13px;color:var(--txt);}
+    .exp-role{font-size:12px;color:var(--mid);margin-top:2px;}
+    .exp-date{font-size:11px;color:var(--dim);align-self:center;letter-spacing:0.04em;white-space:nowrap;}
 
-    .card-thumb { width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 2px; background: var(--paper-warm); flex-shrink: 0; margin-bottom: 1.5rem; }
-    .card-full .card-thumb { width: 48%; aspect-ratio: 4/3; margin-bottom: 0; }
-    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .card:hover .card-thumb img { transform: scale(1.03); }
+    /* CONTACT */
+    .contact{border-top:1px solid var(--rule);padding:clamp(50px,7vw,90px) var(--pad);}
+    .contact-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+    .contact-title{font-family:var(--display);font-size:clamp(52px,9vw,90px);line-height:0.9;letter-spacing:0.02em;margin-bottom:26px;}
+    .contact-title em{font-family:var(--serif);font-style:italic;color:var(--acc);}
+    .cta{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bg);background:var(--txt);padding:13px 22px;text-decoration:none;transition:background 0.2s;}
+    .cta:hover{background:var(--acc);}
+    .contact-details{display:flex;flex-direction:column;}
+    .contact-row{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--rule);}
+    .contact-row:first-child{border-top:1px solid var(--rule);}
+    .c-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim);}
+    .c-val{font-size:13px;color:var(--txt);text-decoration:none;transition:color 0.2s;}
+    .c-val:hover{color:var(--acc);}
+    .available{color:#5a8a6a !important;}
 
-    .card-body { flex: 1; }
-    .card-full .card-body { padding-right: 2rem; }
-    .card-eyebrow { font-size: 10px; font-weight: 400; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.4rem; }
-    .card-title { font-family: var(--serif); font-size: 22px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 0.5rem; }
-    .card-full .card-title { font-size: clamp(26px, 3vw, 34px); }
-    .card-desc { font-size: 13px; line-height: 1.7; color: var(--ink-mid); margin-top: 0.4rem; }
-    .card[data-hidden] { display: none; }
+    /* FOOTER */
+    .foot{border-top:1px solid var(--rule);padding:18px var(--pad);background:var(--bg2);display:flex;justify-content:space-between;align-items:center;}
+    .foot span{font-size:11px;color:var(--dim);letter-spacing:0.06em;}
 
-    /* ── ABOUT ── */
-    .about { border-top: 0.5px solid var(--ink-xlight); padding: clamp(60px, 8vw, 100px) var(--pad); }
-    .about-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 4rem; align-items: start; }
-    .about-sticky { position: sticky; top: 88px; }
-    .about-section-title { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 38px); font-weight: 400; letter-spacing: -0.015em; margin-top: 1rem; }
-    .about-text { font-size: 15px; line-height: 1.85; color: var(--ink-mid); margin-bottom: 1.4rem; }
-    .about-text strong { color: var(--ink); font-weight: 400; }
+    /* ANIM */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .hero{animation:fadeUp 0.7s ease both;}
+    .ticker-wrap{animation:fadeUp 0.7s 0.08s ease both;}
+    .showreel{animation:fadeUp 0.7s 0.12s ease both;}
+    .portfolio{animation:fadeUp 0.7s 0.16s ease both;}
+    .about{animation:fadeUp 0.7s 0.2s ease both;}
+    .contact{animation:fadeUp 0.7s 0.24s ease both;}
 
-    /* Experience list in about */
-    .exp-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
-    .exp-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: baseline; padding: 14px 0; border-bottom: 0.5px solid var(--ink-xlight); }
-    .exp-row:first-child { border-top: 0.5px solid var(--ink-xlight); }
-    .exp-company { font-size: 13px; font-weight: 400; color: var(--ink); }
-    .exp-role { font-size: 12px; color: var(--ink-mid); }
-    .exp-dates { font-size: 11px; color: var(--ink-light); letter-spacing: 0.04em; white-space: nowrap; }
-
-    .resume-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 2rem; font-size: 12px; font-weight: 400; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 0.5px solid var(--ink); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-    .resume-link:hover { color: var(--ink-mid); border-color: var(--ink-mid); }
-
-    .clients { margin-top: 2.5rem; padding-top: 2rem; border-top: 0.5px solid var(--ink-xlight); display: flex; flex-wrap: wrap; gap: 10px 18px; }
-    .client { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
-
-    /* ── CONTACT ── */
-    .contact { border-top: 0.5px solid var(--ink-xlight); padding: clamp(60px, 8vw, 100px) var(--pad); }
-    .contact-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .contact-heading { font-family: var(--serif); font-size: clamp(36px, 5vw, 58px); font-weight: 400; letter-spacing: -0.025em; line-height: 1.05; }
-    .contact-heading em { font-style: italic; color: var(--ink-mid); }
-    .contact-cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 2rem; font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border: 0.5px solid var(--ink-xlight); padding: 14px 22px; border-radius: 2px; transition: background 0.2s, border-color 0.2s; }
-    .contact-cta:hover { background: var(--paper-warm); border-color: var(--ink-light); }
-    .contact-details { display: flex; flex-direction: column; }
-    .contact-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 0.5px solid var(--ink-xlight); }
-    .contact-row:first-child { border-top: 0.5px solid var(--ink-xlight); }
-    .contact-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); }
-    .contact-val { font-size: 14px; color: var(--ink); text-decoration: none; }
-    .contact-val:hover { color: var(--ink-mid); }
-    .available { color: var(--green) !important; }
-
-    /* ── FOOTER ── */
-    .footer { border-top: 0.5px solid var(--ink-xlight); padding: 2rem var(--pad); }
-    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy, .footer-role { font-size: 12px; color: var(--ink-light); }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-    .hero      { animation: fadeUp 0.6s ease both; }
-    .showreel  { animation: fadeUp 0.6s 0.08s ease both; }
-    .portfolio { animation: fadeUp 0.6s 0.12s ease both; }
-    .about     { animation: fadeUp 0.6s 0.16s ease both; }
-    .contact   { animation: fadeUp 0.6s 0.20s ease both; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-desc { max-width: 100%; }
-      .card-full { flex-direction: column !important; }
-      .card-full .card-thumb { width: 100% !important; aspect-ratio: 16/9 !important; }
-      .card-full .card-body { padding-right: 0; }
-      .card-half  { grid-column: span 12; }
-      .card-third { grid-column: span 6; }
-      .about-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .about-sticky { position: static; }
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;gap:2rem;}
+      .hero-desc{max-width:100%;}
+      .grid{grid-template-columns:1fr;}
+      .card-full{grid-column:1;}
+      .card-full .card-img{aspect-ratio:16/9;}
+      .about-inner{grid-template-columns:1fr;gap:2rem;}
+      .contact-inner{grid-template-columns:1fr;gap:2.5rem;}
     }
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: flex; }
-      .card-third { grid-column: span 12; }
-      .portfolio-header { flex-direction: column; align-items: flex-start; }
-      .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+    @media(max-width:600px){
+      .nav-links{display:none;}
+      .nav-toggle{display:flex;}
+      .port-head{flex-direction:column;align-items:flex-start;}
+      .foot{flex-direction:column;gap:6px;text-align:center;}
     }
   </style>
 </head>
 <body>
+
+<canvas id="magic-canvas"></canvas>
+
+<div class="site-wrap">
 
 <!-- NAV -->
 <header class="nav">
@@ -210,14 +223,14 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="Alex Kielesinska CV.pdf" target="_blank" rel="noopener">Resume &#x2197;</a></li>
+        <li><a class="nav-resume" href="Alex Kielesinska CV.pdf" target="_blank" rel="noopener">Resume &#x2197;</a></li>
       </ul>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <nav class="mobile-menu" id="mobileMenu">
     <a href="#showreel">Showreel</a>
     <a href="#work">Work</a>
     <a href="#about">About</a>
@@ -230,38 +243,51 @@
 <section class="hero" id="hero">
   <div>
     <h1 class="hero-title">
-      Creative<br>
-      <em>designer &amp;</em><br>
-      XR developer
+      <span>Creative</span>
+      <span class="italic">&amp; motion<span class="star-glyph">&#x2736;</span></span>
+      <span>designer</span>
     </h1>
   </div>
   <div>
-    <p class="hero-desc">
-      London-based creative and motion designer with 5+ years delivering campaigns for Warner&nbsp;Bros.&nbsp;Discovery, Disney, and the&nbsp;Financial&nbsp;Times — combining motion graphics, broadcast post-production, and hands-on XR&nbsp;development.
-    </p>
+    <p class="hero-desc">London-based. 5+ years delivering high-impact campaigns for Warner&nbsp;Bros.&nbsp;Discovery, Disney, and the Financial&nbsp;Times &#x2014; motion graphics, broadcast GFX, and XR&nbsp;development.</p>
     <div class="hero-tags">
       <span class="tag">Motion Design</span>
       <span class="tag">XR / AR</span>
       <span class="tag">Broadcast GFX</span>
+      <span class="tag">Promo Packaging</span>
+      <span class="tag">Localisation</span>
       <span class="tag">Event Design</span>
-      <span class="tag">London</span>
     </div>
   </div>
 </section>
 
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker" aria-hidden="true">
+    <span class="ticker-item">Warner Bros. Discovery <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">The Walt Disney Company <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">Financial Times <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">Lego <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">TNW Conference <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">Warner Bros. Discovery <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">The Walt Disney Company <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">Financial Times <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">Lego <span class="ticker-dot">&#x2736;</span></span>
+    <span class="ticker-item">TNW Conference <span class="ticker-dot">&#x2736;</span></span>
+  </div>
+</div>
+
 <!-- SHOWREEL -->
 <section class="showreel" id="showreel">
-  <div class="showreel-inner">
-    <div class="section-header">
+  <div class="section-wrap">
+    <div class="section-head">
       <h2 class="section-title">Showreel 2023</h2>
       <span class="eyebrow">Motion Graphics</span>
     </div>
     <div class="video-wrap">
-      <iframe
-        src="https://player.vimeo.com/video/899192533?badge=0&autopause=0&player_id=0&app_id=58479"
+      <iframe src="https://player.vimeo.com/video/899192533?badge=0&autopause=0&player_id=0&app_id=58479"
         allow="autoplay; fullscreen; picture-in-picture"
-        title="Alex Kielesinska Showreel 2023">
-      </iframe>
+        title="Alex Kielesinska Showreel 2023"></iframe>
     </div>
   </div>
 </section>
@@ -269,183 +295,136 @@
 
 <!-- PORTFOLIO -->
 <section class="portfolio" id="work">
-  <div class="portfolio-inner">
-    <div class="portfolio-header">
-      <h2 class="section-title">Selected work</h2>
+  <div class="section-wrap">
+    <div class="port-head">
+      <h2 class="section-title">Selected Work</h2>
       <div class="filters" role="group" aria-label="Filter projects">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="gd">Graphic Design</button>
-        <button class="filter-btn" data-filter="md">Motion</button>
-        <button class="filter-btn" data-filter="vr">AR / XR</button>
+        <button class="fbtn active" data-filter="all">All</button>
+        <button class="fbtn" data-filter="gd">Graphic</button>
+        <button class="fbtn" data-filter="md">Motion</button>
+        <button class="fbtn" data-filter="vr">AR / XR</button>
       </div>
     </div>
 
     <div class="grid" id="grid">
 
-      <!-- 1 Disney TLM — featured -->
       <a class="card card-full" href="TLM Disney.html" data-cats="gd md">
-        <div class="card-body">
-          <p class="card-eyebrow">Disney &middot; EMEA Marketing Campaign</p>
+        <div class="card-img"><img src="public/images/tlg.png" alt="Disney The Little Mermaid" loading="eager"></div>
+        <div class="card-static">
+          <p class="card-eyebrow">Disney &middot; EMEA Campaign</p>
           <h3 class="card-title">The Little Mermaid</h3>
-          <p class="card-desc">Full EMEA campaign for The Walt Disney Company's 2023 theatrical release — spanning social reels, YouTube, digital OOH, and retail across 15+ European markets.</p>
         </div>
-        <div class="card-thumb"><img src="public/images/tlg.png" alt="Disney The Little Mermaid campaign" loading="lazy"></div>
-        <span class="card-arrow">&#x2197;</span>
+        <div class="card-overlay"><div class="card-info">
+          <p class="card-eyebrow">Disney &middot; EMEA Campaign &middot; 15+ markets</p>
+          <h3 class="card-title">The Little Mermaid &#x2197;</h3>
+          <p class="card-desc">Full EMEA campaign spanning social, YouTube, digital OOH, and retail across Europe.</p>
+        </div></div>
+      </a>
+      <a class="card" href="FTLive.html" data-cats="gd md">
+        <div class="card-img"><img src="public/images/ainon.jpeg" alt="Financial Times Live" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">Financial Times &middot; Events</p><h3 class="card-title">FT Live</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Financial Times &middot; Event Design</p><h3 class="card-title">Financial Times Live &#x2197;</h3><p class="card-desc">Stage design, LED installations, and digital branding for FTLive's global programme.</p></div></div>
       </a>
 
-      <!-- 2 AR Art Tate -->
-      <a class="card card-half" href="Tate.html" data-cats="vr">
-        <div class="card-thumb"><img src="public/images/1ea64ca03d49a8c8e50a51264db25251.png" alt="AR Art Tate Museum" loading="lazy"></div>
-        <p class="card-eyebrow">Tate Museum &middot; AR Application</p>
-        <h3 class="card-title">"AR Art" — Tate Museum</h3>
-        <p class="card-desc">Augmented reality application bridging Tate's physical artworks with interactive digital layers for gallery visitors.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="FTbrandvideo.html" data-cats="md">
+        <div class="card-img"><img src="public/images/ff7f55eba8d7ad26c0101244df010022.png" alt="FTLive Brand Video" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">FT &middot; Motion</p><h3 class="card-title">Brand Video</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Financial Times &middot; Motion</p><h3 class="card-title">FTLive Brand Video &#x2197;</h3></div></div>
       </a>
 
-      <!-- 3 FT Live -->
-      <a class="card card-half" href="FTLive.html" data-cats="gd md">
-        <div class="card-thumb"><img src="public/images/ainon.jpeg" alt="Financial Times Live events" loading="lazy"></div>
-        <p class="card-eyebrow">Financial Times &middot; Event Design</p>
-        <h3 class="card-title">Financial Times Live</h3>
-        <p class="card-desc">Full event design and digital marketing for FTLive's global conference programme — stage environments, LED installations, signage, and digital branding systems.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="Wish.html" data-cats="gd md">
+        <div class="card-img"><img src="public/images/wishnon.png" alt="Disney Wish 2023" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">Disney &middot; Holiday 2023</p><h3 class="card-title">Disney Wish</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Disney &middot; Holiday Campaign</p><h3 class="card-title">Disney Wish 2023 &#x2197;</h3></div></div>
       </a>
 
-      <!-- 4 FTLive Brand Video -->
-      <a class="card card-third" href="FTbrandvideo.html" data-cats="md">
-        <div class="card-thumb"><img src="public/images/ff7f55eba8d7ad26c0101244df010022.png" alt="FTLive Brand Video" loading="lazy"></div>
-        <p class="card-eyebrow">Financial Times &middot; Motion</p>
-        <h3 class="card-title">FTLive Brand Video</h3>
-        <p class="card-desc">Motion-led brand video series promoting FTLive events to a global audience.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="find your wonder.html" data-cats="gd md">
+        <div class="card-img"><img src="public/images/findnon.png" alt="Disney Find Your Wonder" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">Disney &middot; YouTube</p><h3 class="card-title">Find Your Wonder</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Disney &middot; YouTube Series</p><h3 class="card-title">Find Your Wonder &#x2197;</h3><p class="card-desc">Motion-led webisode series for European audiences.</p></div></div>
       </a>
 
-      <!-- 5 Find Your Wonder -->
-      <a class="card card-third" href="find your wonder.html" data-cats="gd md">
-        <div class="card-thumb"><img src="public/images/findnon.png" alt="Disney Find Your Wonder" loading="lazy"></div>
-        <p class="card-eyebrow">Disney &middot; YouTube Series</p>
-        <h3 class="card-title">Find Your Wonder</h3>
-        <p class="card-desc">YouTube webisode series combining motion graphics and editorial storytelling to reach European audiences at scale.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="AnimalPortal.html" data-cats="vr">
+        <div class="card-img"><img src="public/images/animnon.png" alt="AR Book Animal Portal" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">Publishing &middot; AR</p><h3 class="card-title">Animal Portal</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Publishing &middot; AR Experience</p><h3 class="card-title">AR Book &#x2014; Animal Portal &#x2197;</h3><p class="card-desc">3D animated animals brought to life through the device camera.</p></div></div>
       </a>
 
-      <!-- 6 Disney Wish -->
-      <a class="card card-third" href="Wish.html" data-cats="gd md">
-        <div class="card-thumb"><img src="public/images/wishnon.png" alt="Disney Wish 2023" loading="lazy"></div>
-        <p class="card-eyebrow">Disney &middot; Holiday Campaign 2023</p>
-        <h3 class="card-title">Disney Wish</h3>
-        <p class="card-desc">GFX packages and motion assets for the Disney Wish EMEA holiday campaign, localised across European territories.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="Tate.html" data-cats="vr">
+        <div class="card-img"><img src="public/images/1ea64ca03d49a8c8e50a51264db25251.png" alt="AR Art prototype" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">Prototype &middot; AR</p><h3 class="card-title">"AR Art"</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Prototype &middot; AR Application</p><h3 class="card-title">"AR Art" &#x2197;</h3><p class="card-desc">Personal prototype — AR experience bridging physical artworks with interactive digital layers.</p></div></div>
       </a>
 
-      <!-- 7 Disney Holiday 2022 -->
-      <a class="card card-half" href="TWOP 2022.html" data-cats="gd">
-        <div class="card-thumb"><img src="public/images/txopnon.png" alt="Disney Holiday 2022" loading="lazy"></div>
-        <p class="card-eyebrow">Disney &middot; Holiday Campaign 2022</p>
-        <h3 class="card-title">Disney Holiday 2022</h3>
-        <p class="card-desc">EMEA Disney holiday campaign — brand-consistent motion and graphic assets delivered across 15+ markets.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="AR Exhibition.html" data-cats="vr">
+        <div class="card-img"><img src="public/images/exhi.png" alt="AR Exhibition prototype" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">Prototype &middot; AR</p><h3 class="card-title">AR Exhibition</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Prototype &middot; AR / Snap Lenses</p><h3 class="card-title">AR Exhibition &#x2197;</h3><p class="card-desc">Personal prototype — art exhibition distributed as AR lenses, making work accessible to a digital audience.</p></div></div>
+      </a>
+      <a class="card" href="TWOP 2022.html" data-cats="gd">
+        <div class="card-img"><img src="public/images/txopnon.png" alt="Disney Holiday 2022" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">Disney &middot; Holiday 2022</p><h3 class="card-title">Disney Holiday</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Disney &middot; Holiday Campaign 2022</p><h3 class="card-title">Disney Holiday 2022 &#x2197;</h3></div></div>
       </a>
 
-      <!-- 8 Animal Portal -->
-      <a class="card card-half" href="AnimalPortal.html" data-cats="vr">
-        <div class="card-thumb"><img src="public/images/animnon.png" alt="AR Book Animal Portal" loading="lazy"></div>
-        <p class="card-eyebrow">Publishing &middot; AR Experience</p>
-        <h3 class="card-title">AR Book — Animal Portal</h3>
-        <p class="card-desc">AR experience layered over a physical book, bringing 3D animated animals to life through the device camera.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="ARFT.html" data-cats="vr">
+        <div class="card-img"><img src="public/images/ARFT_thumb.png" alt="FTWeekend Festival AR Lenses" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">FT Weekend &middot; AR</p><h3 class="card-title">Festival AR Lenses</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">FT Weekend Festival &middot; Snap AR</p><h3 class="card-title">FTWeekend AR Lenses &#x2197;</h3><p class="card-desc">Four dynamic AR lenses built in Lens Studio for the FT Weekend Festival.</p></div></div>
       </a>
 
-      <!-- 9 AR Exhibition -->
-      <a class="card card-third" href="AR Exhibition.html" data-cats="vr">
-        <div class="card-thumb"><img src="public/images/exhi.png" alt="AR Exhibition on Snap" loading="lazy"></div>
-        <p class="card-eyebrow">Snap &middot; AR Exhibition</p>
-        <h3 class="card-title">AR Exhibition</h3>
-        <p class="card-desc">Art exhibition distributed as AR lenses on Snapchat, making the work accessible to a global digital audience.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="FTLive.html" data-cats="gd md">
+        <div class="card-img"><img src="public/images/21e502aff19ceea3542ed19642c2eccf.jpeg" alt="LED Stage Design" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">FT &middot; Stage Design</p><h3 class="card-title">LED Stage</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">Financial Times &middot; Stage Design</p><h3 class="card-title">LED Stage Design &#x2197;</h3><p class="card-desc">Large-scale LED environments for FTLive flagship conferences.</p></div></div>
       </a>
 
-      <!-- 10 LED Stage Design -->
-      <a class="card card-third" href="FTLive.html" data-cats="gd md">
-        <div class="card-thumb"><img src="public/images/21e502aff19ceea3542ed19642c2eccf.jpeg" alt="LED Stage Design FTLive" loading="lazy"></div>
-        <p class="card-eyebrow">Financial Times &middot; Stage Design</p>
-        <h3 class="card-title">LED Stage Design</h3>
-        <p class="card-desc">Large-scale LED stage environments and digital signage systems for FTLive flagship conferences.</p>
-        <span class="card-arrow">&#x2197;</span>
-      </a>
-
-      <!-- 11 FTWeekend AR -->
-      <a class="card card-third" href="ARFT.html" data-cats="vr">
-        <div class="card-thumb"><img src="public/images/FTWTnon.png" alt="FTWeekend Festival AR Lenses" loading="lazy"></div>
-        <p class="card-eyebrow">FT Weekend &middot; AR / Live Events</p>
-        <h3 class="card-title">FTWeekend Festival — AR</h3>
-        <p class="card-desc">Prototype AR lenses extending the FT Weekend Festival live experience digitally via Snapchat.</p>
-        <span class="card-arrow">&#x2197;</span>
-      </a>
-
-      <!-- 12 TNW Conference -->
-      <a class="card card-half" href="TNW.html" data-cats="gd md">
-        <div class="card-thumb"><img src="public/Frame 5.png" alt="TNW Conference 2024" loading="lazy"></div>
-        <p class="card-eyebrow">TNW &middot; Event Design 2024</p>
-        <h3 class="card-title">TNW Conference 2024</h3>
-        <p class="card-desc">Full event design for TNW Conference 2024 in Amsterdam — stage, branding, and digital environments.</p>
-        <span class="card-arrow">&#x2197;</span>
+      <a class="card" href="TNW.html" data-cats="gd md">
+        <div class="card-img"><img src="public/Frame 5.png" alt="TNW Conference 2024" loading="lazy"></div>
+        <div class="card-static"><p class="card-eyebrow">TNW &middot; Event 2024</p><h3 class="card-title">TNW Conference</h3></div>
+        <div class="card-overlay"><div class="card-info"><p class="card-eyebrow">TNW &middot; Event Design 2024</p><h3 class="card-title">TNW Conference 2024 &#x2197;</h3><p class="card-desc">Full event design for TNW Conference 2024, Amsterdam.</p></div></div>
       </a>
 
     </div>
   </div>
 </section>
 
+<!-- CONSTELLATION DIVIDER -->
+<div class="const-strip" aria-hidden="true">
+  <svg class="const-svg" viewBox="0 0 1200 34" preserveAspectRatio="none">
+    <g stroke="#7c5c2e" stroke-width="0.9" fill="none">
+      <line x1="40" y1="17" x2="140" y2="7"/><line x1="140" y1="7" x2="230" y2="26"/>
+      <line x1="230" y1="26" x2="370" y2="11"/><line x1="370" y1="11" x2="490" y2="22"/>
+      <line x1="490" y1="22" x2="610" y2="5"/><line x1="610" y1="5" x2="720" y2="19"/>
+      <line x1="720" y1="19" x2="860" y2="13"/><line x1="860" y1="13" x2="990" y2="24"/>
+      <line x1="990" y1="24" x2="1120" y2="8"/><line x1="1120" y1="8" x2="1180" y2="20"/>
+    </g>
+    <g fill="#7c5c2e">
+      <circle cx="40"   cy="17" r="3"/><circle cx="140"  cy="7"  r="2"/>
+      <circle cx="230"  cy="26" r="2.5"/><circle cx="370" cy="11" r="3"/>
+      <circle cx="490"  cy="22" r="1.8"/><circle cx="610" cy="5"  r="3.5"/>
+      <circle cx="720"  cy="19" r="2"/><circle cx="860"  cy="13" r="2.5"/>
+      <circle cx="990"  cy="24" r="3"/><circle cx="1120" cy="8"  r="2"/>
+      <circle cx="1180" cy="20" r="1.8"/>
+    </g>
+  </svg>
+</div>
+
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-inner">
     <div>
-      <div class="about-sticky">
-        <span class="eyebrow">About</span>
-        <h2 class="about-section-title">Hi, I'm Alex</h2>
-      </div>
+      <div class="about-watermark" aria-hidden="true">ABOUT</div>
+      <p class="about-text"><strong>Creative and motion designer based in London</strong>, with 5+ years delivering campaigns for Warner Bros. Discovery, The Walt Disney Company, and the Financial Times.</p>
+      <p class="about-text">MA-educated in Virtual &amp; Augmented Reality at <strong>Goldsmiths</strong>. Specialist in 2D/3D motion graphics, broadcast post-production, and XR Specialist in 2D/3D motion graphics, broadcast post-production, and XR development &#x2014; with hands-on XR development experience spanning AR applications, live event lenses, and interactive installations.#x2014; with hands-on experience spanning AR applications, live event lenses, and interactive installations.</p>
+      <p class="about-text">Always open to ambitious projects at the edge of technology and art.</p>
+      <a class="resume-btn" href="Alex Kielesinska CV.pdf" target="_blank" rel="noopener">Download Resume &#x2197;</a>
     </div>
     <div>
-      <p class="about-text">
-        <strong>Creative and motion designer based in London</strong>, with 5+ years delivering high-impact work for Warner Bros. Discovery, The Walt Disney Company, and the Financial Times. I specialise in 2D/3D motion graphics, broadcast post-production, and XR/AR development — combining rigorous technical execution with bold visual storytelling.
-      </p>
-      <p class="about-text">
-        I hold an <strong>MA in Virtual &amp; Augmented Reality from Goldsmiths</strong>, and have shipped AR experiences for institutions including the Tate Museum and Snap. I pride myself on pushing the boundaries of what's possible at the intersection of technology and art — creating experiences that are truly unforgettable.
-      </p>
-      <p class="about-text">
-        I'm always open to ambitious new projects. Please feel free to get in touch.
-      </p>
-
-      <div class="exp-list" aria-label="Work history">
-        <div class="exp-row">
-          <div><div class="exp-company">Warner Bros. Discovery</div><div class="exp-role">Promo Packaging &amp; GFX Editor</div></div>
-          <span class="exp-dates">2024 – Present</span>
-        </div>
-        <div class="exp-row">
-          <div><div class="exp-company">Financial Times Live</div><div class="exp-role">Designer</div></div>
-          <span class="exp-dates">2022 – 2024</span>
-        </div>
-        <div class="exp-row">
-          <div><div class="exp-company">The Walt Disney Company</div><div class="exp-role">Creative Designer (Freelance)</div></div>
-          <span class="exp-dates">2022 – 2023</span>
-        </div>
-        <div class="exp-row">
-          <div><div class="exp-company">Pattern Atelier</div><div class="exp-role">Graphic Designer &amp; Illustrator</div></div>
-          <span class="exp-dates">2021 – 2022</span>
-        </div>
-      </div>
-
-      <a class="resume-link" href="Alex Kielesinska CV.pdf" target="_blank" rel="noopener">Download Resume &#x2197;</a>
-
-      <div class="clients" aria-label="Selected clients">
-        <span class="client">Warner Bros. Discovery</span>
-        <span class="client">Disney</span>
-        <span class="client">Financial Times</span>
-        <span class="client">Lego</span>
-        <span class="client">Tate Museum</span>
-        <span class="client">TNW</span>
-        <span class="client">Snap</span>
-      </div>
+      <div class="exp-row"><div><div class="exp-co">Warner Bros. Discovery</div><div class="exp-role">Promo Packaging &amp; GFX Editor</div></div><span class="exp-date">2024 &#x2013; Present</span></div>
+      <div class="exp-row"><div><div class="exp-co">Financial Times Live</div><div class="exp-role">Designer</div></div><span class="exp-date">2022 &#x2013; 2024</span></div>
+      <div class="exp-row"><div><div class="exp-co">The Walt Disney Company</div><div class="exp-role">Creative Designer (Freelance)</div></div><span class="exp-date">2022 &#x2013; 2023</span></div>
+      <div class="exp-row"><div><div class="exp-co">Pattern Atelier</div><div class="exp-role">Graphic Designer &amp; Illustrator</div></div><span class="exp-date">2021 &#x2013; 2022</span></div>
     </div>
   </div>
 </section>
@@ -454,71 +433,144 @@
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div>
-      <h2 class="contact-heading">Open to new<br><em>projects</em></h2>
-      <a class="contact-cta" href="mailto:kieleax@gmail.com">Get in touch &#x2197;</a>
+      <h2 class="contact-title">Let&#x2019;s<br><em>work</em><br>together</h2>
+      <a class="cta" href="mailto:kieleax@gmail.com">Get in touch &#x2197;</a>
     </div>
     <div class="contact-details">
-      <div class="contact-row">
-        <span class="contact-label">Email</span>
-        <a class="contact-val" href="mailto:kieleax@gmail.com">kieleax@gmail.com</a>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">Phone</span>
-        <a class="contact-val" href="tel:+447727120534">+44 7727 120 534</a>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">Location</span>
-        <span class="contact-val">London, UK</span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">LinkedIn</span>
-        <a class="contact-val" href="https://linkedin.com/in/axkielesinska" target="_blank" rel="noopener">axkielesinska &#x2197;</a>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">Availability</span>
-        <span class="contact-val available">Open to projects</span>
-      </div>
+      <div class="contact-row"><span class="c-label">Email</span><a class="c-val" href="mailto:kieleax@gmail.com">kieleax@gmail.com</a></div>
+      <div class="contact-row"><span class="c-label">Phone</span><a class="c-val" href="tel:+447727120534">+44 7727 120 534</a></div>
+      <div class="contact-row"><span class="c-label">Location</span><span class="c-val">London, UK</span></div>
+      <div class="contact-row"><span class="c-label">LinkedIn</span><a class="c-val" href="https://linkedin.com/in/axkielesinska" target="_blank" rel="noopener">axkielesinska &#x2197;</a></div>
+      <div class="contact-row"><span class="c-label">Availability</span><span class="c-val available">Open to projects</span></div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <span class="footer-copy">&copy; Alex Kielesinska 2025</span>
-    <span class="footer-role">Creative Designer &middot; Motion &middot; XR &middot; London</span>
-  </div>
+<footer class="foot">
+  <span>&#xa9; Alex Kielesinska 2025</span>
+  <span>Creative Designer &middot; Motion &middot; XR &middot; London</span>
 </footer>
 
-<script>
-  // Mobile nav
-  const toggle = document.getElementById('navToggle');
-  const menu   = document.getElementById('mobileMenu');
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    toggle.classList.toggle('open', open);
-  });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menu.classList.remove('open'); toggle.classList.remove('open');
-  }));
+</div>
 
-  // Portfolio filter
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const cards      = document.querySelectorAll('.card[data-cats]');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      cards.forEach(card => {
-        if (f === 'all' || card.dataset.cats.split(' ').includes(f)) {
-          card.removeAttribute('data-hidden');
-        } else {
-          card.setAttribute('data-hidden', '');
-        }
-      });
+<script>
+// ── STAR FIELD ──
+const canvas = document.getElementById('magic-canvas');
+const ctx = canvas.getContext('2d');
+let stars = [], W, H;
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', () => { resize(); initStars(); });
+
+function initStars() {
+  stars = [];
+  const n = Math.floor((W * H) / 16000);
+  for (let i = 0; i < n; i++) {
+    stars.push({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.3 + 0.3,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.003 + Math.random() * 0.007,
+      baseAlpha: 0.06 + Math.random() * 0.16
+    });
+  }
+}
+initStars();
+
+let t = 0;
+(function draw() {
+  ctx.clearRect(0, 0, W, H);
+  t += 0.016;
+  for (const s of stars) {
+    const a = s.baseAlpha * (0.4 + 0.6 * Math.sin(s.phase + t * s.speed * 60));
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(124,92,46,${a})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(draw);
+})();
+
+// ── CURSOR SPARKLES ──
+// Six-pointed star path drawn on a small canvas, stamped as a tiny element
+function makeStar(x, y) {
+  const el = document.createElement('canvas');
+  const size = 14 + Math.random() * 10;
+  el.width = el.height = size;
+  el.className = 'sparkle';
+  const angle = Math.random() * Math.PI * 2;
+  const dist  = 20 + Math.random() * 30;
+  el.style.cssText = `left:${x - size/2}px;top:${y - size/2}px;--tx:${Math.cos(angle)*dist}px;--ty:${Math.sin(angle)*dist}px;`;
+  const c = el.getContext('2d');
+  const cx = size / 2, cy = size / 2, r = size / 2 - 1, ir = r * 0.42;
+  c.beginPath();
+  const pts = 4;
+  for (let i = 0; i < pts * 2; i++) {
+    const rad = (i * Math.PI) / pts - Math.PI / 2;
+    const rv  = i % 2 === 0 ? r : ir;
+    i === 0 ? c.moveTo(cx + rv * Math.cos(rad), cy + rv * Math.sin(rad))
+             : c.lineTo(cx + rv * Math.cos(rad), cy + rv * Math.sin(rad));
+  }
+  c.closePath();
+  const alpha = 0.55 + Math.random() * 0.35;
+  c.fillStyle = `rgba(184,137,58,${alpha})`;
+  c.fill();
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 750);
+}
+
+let lastSparkle = 0;
+document.addEventListener('mousemove', (e) => {
+  const now = Date.now();
+  if (now - lastSparkle > 80 && Math.random() > 0.55) {
+    lastSparkle = now;
+    makeStar(e.clientX, e.clientY);
+  }
+});
+
+// Occasional random sparkles that appear on their own
+setInterval(() => {
+  if (Math.random() > 0.6) {
+    makeStar(
+      100 + Math.random() * (window.innerWidth - 200),
+      100 + Math.random() * (window.innerHeight - 200)
+    );
+  }
+}, 1800);
+
+// ── MOBILE NAV ──
+const toggle = document.getElementById('navToggle');
+const menu   = document.getElementById('mobileMenu');
+toggle.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  toggle.classList.toggle('open', open);
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open'); toggle.classList.remove('open');
+}));
+
+// ── PORTFOLIO FILTER ──
+const filterBtns = document.querySelectorAll('.fbtn');
+const cards      = document.querySelectorAll('.card[data-cats]');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    cards.forEach(card => {
+      if (f === 'all' || card.dataset.cats.split(' ').includes(f)) {
+        card.removeAttribute('data-hidden');
+      } else {
+        card.setAttribute('data-hidden', '');
+      }
     });
   });
+});
 </script>
 </body>
 </html>
